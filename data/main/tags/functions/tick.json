@@ -1,0 +1,6 @@
+{
+    "replace": false,
+    "values": [
+        "mcr-devbook:tick"
+    ]
+}

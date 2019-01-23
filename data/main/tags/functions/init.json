@@ -1,0 +1,5 @@
+{
+    "values": [
+        "mcr-devbook:init", "mcr-devbook:init_gamerule"
+    ]
+}

@@ -1,0 +1,1 @@
+effect give @e[type=armor_stand,team=!] minecraft:glowing 2 1 true
