@@ -33,10 +33,12 @@ foreach ($gamerules as $gamerule) {
     if(!isset($gamerule['type'])) {
         $functionOn = 'gamerule '.$gamerule['rule'].' true
 scoreboard players set @a '.$gamerule['tag'].' 1
+tellraw @a ["",{"selector":"@s"},{"text":" set the gamerule '.$gamerule['rule'].' to true"}]
 execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
 
         $functionOff = 'gamerule '.$gamerule['rule'].' false
 scoreboard players set @a '.$gamerule['tag'].' 0
+tellraw @a ["",{"selector":"@s"},{"text":" set the gamerule '.$gamerule['rule'].' to false"}]
 execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
 
 
@@ -45,6 +47,7 @@ execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
     } else {
         $functionDefault = 'gamerule '.$gamerule['rule'].' '.$gamerule['default'].'
 scoreboard players set @a '.$gamerule['tag'].' '.$gamerule['default'].'
+tellraw @a ["",{"selector":"@s"},{"text":" set the gamerule '.$gamerule['rule'].' to default ('.$gamerule['default'].')"}]
 execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
 
         file_put_contents('gamerule/'.strtolower($gamerule['rule']).'/set_default.mcfunction', $functionDefault);
@@ -52,6 +55,7 @@ execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
         foreach ($gamerule['options'] as $option) {
             $functionValue = 'gamerule '.$gamerule['rule'].' '.$option.'
 scoreboard players set @a '.$gamerule['tag'].' '.$option.'
+tellraw @a ["",{"selector":"@s"},{"text":" set the gamerule '.$gamerule['rule'].' to '.$option.'"}]
 execute if score @s mcr_devbook matches 1 run function mcr-devbook:get_book';
 
             file_put_contents('gamerule/'.strtolower($gamerule['rule']).'/set_'.$option.'.mcfunction', $functionValue);
